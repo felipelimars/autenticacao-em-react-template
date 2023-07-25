@@ -4,13 +4,15 @@ import axios from 'axios'
 
 
 
-export default function useRequestData(estadoInicial, path) {
+export default function useRequestData(estadoInicial, path, headers) {
+
+
 
     const [dados, setDados] = useState(estadoInicial)
     const [erro, setErro] = useState('')
 
     const receberDados = () =>{
-        axios.get(`${BASE_URL}${path}`)
+        axios.get(`${BASE_URL}${path}`, headers)
         .then((resposta) => {
             setDados(resposta.data)
         })
